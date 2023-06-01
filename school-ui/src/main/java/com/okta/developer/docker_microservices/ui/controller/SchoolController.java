@@ -4,7 +4,6 @@ import com.okta.developer.docker_microservices.ui.dto.TeachingClassDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +24,10 @@ public class SchoolController {
 
     @RequestMapping("")
     public ModelAndView index() {
-        return new ModelAndView("index");
+        return new ModelAndView("indice");
     }
 
     @GetMapping("/classes")
-    @PreAuthorize("hasAuthority('SCOPE_profile')")
     public ResponseEntity<List<TeachingClassDto>> listClasses() {
 
         return restTemplate
